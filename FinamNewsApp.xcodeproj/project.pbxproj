@@ -9,21 +9,31 @@
 /* Begin PBXBuildFile section */
 		0257358B26CD53A7006E3E6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0257358A26CD53A7006E3E6E /* AppDelegate.swift */; };
 		0257358D26CD53A7006E3E6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0257358C26CD53A7006E3E6E /* SceneDelegate.swift */; };
-		0257358F26CD53A7006E3E6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0257358E26CD53A7006E3E6E /* ViewController.swift */; };
-		0257359226CD53A7006E3E6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0257359026CD53A7006E3E6E /* Main.storyboard */; };
+		0257358F26CD53A7006E3E6E /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0257358E26CD53A7006E3E6E /* NewsListViewController.swift */; };
 		0257359426CD53A9006E3E6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0257359326CD53A9006E3E6E /* Assets.xcassets */; };
 		0257359726CD53A9006E3E6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0257359526CD53A9006E3E6E /* LaunchScreen.storyboard */; };
+		025735A026CD54CE006E3E6E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0257359F26CD54CE006E3E6E /* NetworkManager.swift */; };
+		025735A626CD55E1006E3E6E /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025735A526CD55E1006E3E6E /* News.swift */; };
+		025735A826CD56E3006E3E6E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025735A726CD56E3006E3E6E /* Constants.swift */; };
+		025735AA26CD6255006E3E6E /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025735A926CD6255006E3E6E /* NewsTableViewCell.swift */; };
+		025735AD26CD88B9006E3E6E /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025735AC26CD88B9006E3E6E /* NewsViewModel.swift */; };
+		025735AF26CD8E4E006E3E6E /* SelectedNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025735AE26CD8E4E006E3E6E /* SelectedNewsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0257358726CD53A7006E3E6E /* FinamNewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinamNewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0257358A26CD53A7006E3E6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0257358C26CD53A7006E3E6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0257358E26CD53A7006E3E6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0257359126CD53A7006E3E6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0257358E26CD53A7006E3E6E /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
 		0257359326CD53A9006E3E6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0257359626CD53A9006E3E6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0257359826CD53A9006E3E6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0257359F26CD54CE006E3E6E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		025735A526CD55E1006E3E6E /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		025735A726CD56E3006E3E6E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		025735A926CD6255006E3E6E /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		025735AC26CD88B9006E3E6E /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
+		025735AE26CD8E4E006E3E6E /* SelectedNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedNewsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +66,68 @@
 		0257358926CD53A7006E3E6E /* FinamNewsApp */ = {
 			isa = PBXGroup;
 			children = (
-				0257358A26CD53A7006E3E6E /* AppDelegate.swift */,
-				0257358C26CD53A7006E3E6E /* SceneDelegate.swift */,
-				0257358E26CD53A7006E3E6E /* ViewController.swift */,
-				0257359026CD53A7006E3E6E /* Main.storyboard */,
-				0257359326CD53A9006E3E6E /* Assets.xcassets */,
-				0257359526CD53A9006E3E6E /* LaunchScreen.storyboard */,
+				025735A226CD5587006E3E6E /* Helpers */,
+				025735A426CD55D5006E3E6E /* Models */,
+				025735AB26CD88A1006E3E6E /* ViewModels */,
+				025735A126CD5580006E3E6E /* Controllers */,
+				0257359E26CD54B9006E3E6E /* NetworkManagers */,
+				025735A326CD55AE006E3E6E /* Views */,
 				0257359826CD53A9006E3E6E /* Info.plist */,
 			);
 			path = FinamNewsApp;
+			sourceTree = "<group>";
+		};
+		0257359E26CD54B9006E3E6E /* NetworkManagers */ = {
+			isa = PBXGroup;
+			children = (
+				0257359F26CD54CE006E3E6E /* NetworkManager.swift */,
+			);
+			path = NetworkManagers;
+			sourceTree = "<group>";
+		};
+		025735A126CD5580006E3E6E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0257358E26CD53A7006E3E6E /* NewsListViewController.swift */,
+				025735AE26CD8E4E006E3E6E /* SelectedNewsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		025735A226CD5587006E3E6E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0257358A26CD53A7006E3E6E /* AppDelegate.swift */,
+				0257358C26CD53A7006E3E6E /* SceneDelegate.swift */,
+				0257359326CD53A9006E3E6E /* Assets.xcassets */,
+				0257359526CD53A9006E3E6E /* LaunchScreen.storyboard */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		025735A326CD55AE006E3E6E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				025735A926CD6255006E3E6E /* NewsTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		025735A426CD55D5006E3E6E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				025735A526CD55E1006E3E6E /* News.swift */,
+				025735A726CD56E3006E3E6E /* Constants.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		025735AB26CD88A1006E3E6E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				025735AC26CD88B9006E3E6E /* NewsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +189,6 @@
 			files = (
 				0257359726CD53A9006E3E6E /* LaunchScreen.storyboard in Resources */,
 				0257359426CD53A9006E3E6E /* Assets.xcassets in Resources */,
-				0257359226CD53A7006E3E6E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,23 +199,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0257358F26CD53A7006E3E6E /* ViewController.swift in Sources */,
+				025735A026CD54CE006E3E6E /* NetworkManager.swift in Sources */,
+				0257358F26CD53A7006E3E6E /* NewsListViewController.swift in Sources */,
 				0257358B26CD53A7006E3E6E /* AppDelegate.swift in Sources */,
+				025735AF26CD8E4E006E3E6E /* SelectedNewsViewController.swift in Sources */,
+				025735A626CD55E1006E3E6E /* News.swift in Sources */,
+				025735AA26CD6255006E3E6E /* NewsTableViewCell.swift in Sources */,
 				0257358D26CD53A7006E3E6E /* SceneDelegate.swift in Sources */,
+				025735A826CD56E3006E3E6E /* Constants.swift in Sources */,
+				025735AD26CD88B9006E3E6E /* NewsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0257359026CD53A7006E3E6E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0257359126CD53A7006E3E6E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		0257359526CD53A9006E3E6E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,6 +349,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SAY4Y2DWXX;
 				INFOPLIST_FILE = FinamNewsApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,7 +357,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tengizov.FinamNewsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,6 +369,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SAY4Y2DWXX;
 				INFOPLIST_FILE = FinamNewsApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,7 +377,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tengizov.FinamNewsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
