@@ -13,11 +13,9 @@ class NetworkManager {
     
     private init() {}
     
-    func getNews(keyWord: String, completion: @escaping (Result<[Article],Error>) -> Void) {
-        
-        let searchParameter = keyWord.isEmpty ? "country=ru" : "q=\(keyWord)"
+    func getNews(completion: @escaping (Result<[Article],Error>) -> Void) {
        
-        let urlString = "https://newsapi.org/v2/top-headlines?\(searchParameter)&pageSize=50&apiKey=\(Constants.key)"
+        let urlString = "https://newsapi.org/v2/top-headlines?country=ru&pageSize=50&apiKey=\(Constants.key)"
 
         guard let url = URL(string: urlString) else { return }
         

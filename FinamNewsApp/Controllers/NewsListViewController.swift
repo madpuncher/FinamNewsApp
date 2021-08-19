@@ -10,8 +10,6 @@ import UIKit
 class NewsListViewController: UIViewController {
     
     //MARK: - Const
-    private let searchController = UISearchController(searchResultsController: nil)
-    
     private let tableView: UITableView = {
         let table = UITableView()
         table.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.identifier)
@@ -24,17 +22,13 @@ class NewsListViewController: UIViewController {
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        searchController.searchBar.delegate = self
-        
+                
         tableView.dataSource = self
         tableView.delegate = self
         
         settingUI()
         
         view.addSubview(tableView)
-        
-        setupSearchBar()
         
         getNews(searchText: "")
         
@@ -50,7 +44,7 @@ class NewsListViewController: UIViewController {
     private func settingUI() {
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
-        title = "Новости"
+        title = "Последние новости"
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.156837225, green: 0.1632107198, blue: 0.1931262016, alpha: 1)
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         
@@ -60,14 +54,9 @@ class NewsListViewController: UIViewController {
         tableView.separatorColor = .gray
     }
     
-    private func setupSearchBar() {
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-    }
-    
     //MARK: - Download news with NetworkManager
     private func getNews(searchText: String) {
-        NetworkManager.shared.getNews(keyWord: searchText) {[weak self] result in
+        NetworkManager.shared.getNews() {[weak self] result in
             switch result {
             case .success(let news):
                 self?.viewModels = news.compactMap({
@@ -116,15 +105,6 @@ extension NewsListViewController: UITableViewDelegate, UITableViewDataSource {
         130
     }
 }
-
-//MARK: Search controller
-extension NewsListViewController: UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        getNews(searchText: searchText)
-    }
-}
-
 
 //MARK: Setup Canvas
 import SwiftUI
