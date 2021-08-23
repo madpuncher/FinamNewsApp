@@ -13,9 +13,22 @@ class NetworkManager {
     
     private init() {}
     
-    func getNews(completion: @escaping (Result<[Article],Error>) -> Void) {
-       
-        let urlString = "https://newsapi.org/v2/top-headlines?country=ru&pageSize=50&apiKey=\(Constants.key)"
+    func getNews(newsType: Int, completion: @escaping (Result<[Article],Error>) -> Void) {
+        
+        var urlString = "https://newsapi.org/v2/top-headlines?country=ru&category=business&pageSize=50&apiKey=\(Constants.key)"
+        
+        switch newsType {
+        case 0:
+            urlString = "https://newsapi.org/v2/top-headlines?country=ru&pageSize=50&apiKey=\(Constants.key)"
+        case 1:
+            urlString = "https://newsapi.org/v2/top-headlines?country=ru&category=sport&pageSize=50&apiKey=\(Constants.key)"
+        case 2:
+            urlString = "https://newsapi.org/v2/top-headlines?country=ru&category=health&pageSize=50&apiKey=\(Constants.key)"
+        case 3:
+            urlString = "https://newsapi.org/v2/top-headlines?country=ru&category=business&pageSize=50&apiKey=\(Constants.key)"
+        default:
+            urlString = "https://newsapi.org/v2/top-headlines?country=ru&pageSize=50&apiKey=\(Constants.key)"
+        }
 
         guard let url = URL(string: urlString) else { return }
         

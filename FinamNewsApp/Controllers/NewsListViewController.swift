@@ -16,6 +16,8 @@ class NewsListViewController: UIViewController {
         
         return table
     }()
+    
+    let segmentControl = UISegmentedControl(items: ["Все", "Спорт", "Здоровье", "Бизнес"])
         
     private var viewModels = [NewsTableViewModel]()
     
@@ -30,8 +32,12 @@ class NewsListViewController: UIViewController {
         
         view.addSubview(tableView)
         
-        getNews(searchText: "")
+        getNews(type: 0)
         
+        segmentControl.addTarget(self,
+                                 action: #selector(segmentedValueChanged),
+                                 for: .valueChanged)
+                
     }
     
     override func viewDidLayoutSubviews() {
@@ -39,12 +45,17 @@ class NewsListViewController: UIViewController {
         tableView.frame = view.bounds
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     
     //MARK: - Layout and UI
     private func settingUI() {
         navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.prefersLargeTitles = true
-        title = "Последние новости"
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.156837225, green: 0.1632107198, blue: 0.1931262016, alpha: 1)
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         
@@ -52,11 +63,61 @@ class NewsListViewController: UIViewController {
         
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         tableView.separatorColor = .gray
+        
+        createHeader()
+    }
+    
+    private func createHeader() {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 120))
+        tableView.tableHeaderView = headerView
+        
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateFormat = "EEE, d MMMM"
+        let dateString = dateFormatter.string(from: date)
+        
+        let dateLabel = UILabel()
+        dateLabel.text = String(dateString)
+        dateLabel.textColor = .secondaryLabel
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "Свежие новости"
+        titleLabel.font = UIFont(name: "Avenir-Black", size: 20)
+        
+        let stackView = UIStackView(arrangedSubviews: [dateLabel,titleLabel])
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 5
+        
+        segmentControl.selectedSegmentIndex = 0
+        segmentControl.translatesAutoresizingMaskIntoConstraints = false
+        
+        headerView.addSubview(segmentControl)
+        headerView.addSubview(stackView)
+       
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16),
+            stackView.topAnchor.constraint(equalTo: headerView.topAnchor, constant: 20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            segmentControl.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 16),
+            segmentControl.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -16),
+            segmentControl.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 10)
+        ])
+        
+    }
+    
+    @objc private func segmentedValueChanged() {
+        let segmentIndex = segmentControl.selectedSegmentIndex
+        getNews(type: segmentIndex)
     }
     
     //MARK: - Download news with NetworkManager
-    private func getNews(searchText: String) {
-        NetworkManager.shared.getNews() {[weak self] result in
+    private func getNews(type: Int) {
+        NetworkManager.shared.getNews(newsType: type) {[weak self] result in
             switch result {
             case .success(let news):
                 self?.viewModels = news.compactMap({

@@ -69,9 +69,10 @@ class SelectedNewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.topItem?.title = "Главное меню"
+
         view.backgroundColor = #colorLiteral(red: 0.156837225, green: 0.1632107198, blue: 0.1931262016, alpha: 1)
         setupConstraints()
-        
     }
     
     //MARK: - Convert date
